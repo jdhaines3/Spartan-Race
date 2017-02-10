@@ -1,0 +1,37 @@
+ALGORITHM FOR SPARTAN RACE
+David Haines
+
+Race setup:
+	To begin, think of race as an array of 50 chars of whitespace (string of 50 char)
+	-each racer will move through this string, replacing one of the white spaces each print iteration
+	-position in the array will be determined by an int pointer. 
+	-so when printing, can just set the index of the array to the value of pointer (not address)
+		and make that equal to A or B (whichever racer's pointer it is); say the pointer's value is 29
+		for racer B, array[29] = B
+	-once one of the pointer's values reaches 49 (due to array index starting at 0), that pointer's 
+		racer will have reached the finish line and won.
+
+Racer advancement:
+	-Racers (pointers) will start at position (or int) 0. 
+	-for each turn a random number will be called between 1 and 100 (for percentages)
+	-what that number is determines the type of obstacle to face, as each racer has different percentages
+		to do obstacles.
+		-ex: for racer B, there is a 40$ chance of running so a rand int of 1-40 will be run, a 10% chance
+			of sprinting so rand int of 41-50 will be sprint and so on.
+		-if racer A and racer B have the same obstacle, one must re-roll the random number.
+	-add the pointer value by number of spaces the racer must move, ex: racer B pointer adds 5 for "Run"
+		while racer A pointer adds -3 for "Rope"
+	-If both pointers are then the same value, racer A must fall back one space (-1 to value)
+
+Show race:
+	-print the string of 50 char, with "A" replacing the whitespace at the index of ptrA value
+		and "B" for index of ptrB value
+
+while the either pointer's value is <= race length, repeat the above sections. 
+If a pointer's value is less than or equal to 0, then their position will be set to zero
+	-if both pointers are zero, A moves ahead one (instead of pushing B back).
+If a pointer's value is >= race length, that player has crossed the finish line and they win
+	-if both pointer's value is >= race length, the racer's pointer with the higher value wins
+
+
+			
