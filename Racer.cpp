@@ -11,7 +11,6 @@ void printPosition(int* ptrRacerA, int* ptrRacerB);
 void advanceRacerA (int* ptrRacerA)
 {
 	//random number generator
-	srand (time(NULL));
 	
 	int obstacleNumA;
 	
@@ -44,7 +43,6 @@ void advanceRacerA (int* ptrRacerA)
 void advanceRacerB (int* ptrRacerB)
 {
 	//random number generator
-	srand (time(NULL));
 	
 	int obstacleNumB;
 	
@@ -53,16 +51,17 @@ void advanceRacerB (int* ptrRacerB)
 	
 	//determine obstacle by rand number and percentages
 	//percentages will be different for B as well as int change of value at pointer
-	if (obstacleNumB <= 40){
-		*ptrRacerB = (*ptrRacerB) + 5;
-	}else if(41 <= obstacleNumB && obstacleNumB <= 50) {
-		*ptrRacerB = (*ptrRacerB) + 6;
-	}else if(51 <= obstacleNumB && obstacleNumB <= 70) {
-		*ptrRacerB = (*ptrRacerB) - 1;
-	}else if(71 <= obstacleNumB && obstacleNumB <= 90) {
-		*ptrRacerB = (*ptrRacerB) - 2;
-	}else if(91 <= obstacleNumB && obstacleNumB <= 100) {
+	//reversed from racerA just so higher prob of randomization
+	if (obstacleNumB <= 10){
 		*ptrRacerB = (*ptrRacerB) - 4;
+	}else if(11 <= obstacleNumB && obstacleNumB <= 30) {
+		*ptrRacerB = (*ptrRacerB) - 2;
+	}else if(31 <= obstacleNumB && obstacleNumB <= 50) {
+		*ptrRacerB = (*ptrRacerB) - 1;
+	}else if(51 <= obstacleNumB && obstacleNumB <= 60) {
+		*ptrRacerB = (*ptrRacerB) + 6;
+	}else if(61 <= obstacleNumB && obstacleNumB <= 100) {
+		*ptrRacerB = (*ptrRacerB) + 5;
 	}
 	
 	//similar space constraints as ptrRacerA
@@ -89,7 +88,6 @@ void printPosition(int* ptrRacerA, int* ptrRacerB)
 	
 	//print line
 	std::cout << race << std::endl;
-	
 	//due to while loop in main, race will re-initialize as all white spaces in order to clear last turn
 	return;
 }
@@ -113,6 +111,8 @@ int main()
 	//keepGoing variable in order to exit while loop
 	int keepGoing = 0;
 	
+	srand (time(NULL));
+	
 	//while loop to repeat turns until someone wins
 	while (keepGoing == 0) {
 		
@@ -124,7 +124,7 @@ int main()
 		also make sure they both aren't on same space. move A back one if so. if both are zero,
 		move B forward 1 instead*/
 		if (*ptrRacerA == 0 && *ptrRacerB == 0){
-			*ptrRacerB = 1;
+			*ptrRacerB = (*ptrRacerB) + 1;
 		}else if(*ptrRacerA == *ptrRacerB) {
 			*ptrRacerA = (*ptrRacerA) - 1;
 		}
