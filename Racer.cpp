@@ -113,6 +113,10 @@ int main()
 	
 	srand (time(NULL));
 	
+	//intro for user
+	std::cout << "Welcome to the C++ Spartan Race!" << std::endl;
+	std::cout << "Good Luck! Ready, Set, GO!" << std::endl;
+	
 	//while loop to repeat turns until someone wins
 	while (keepGoing == 0) {
 		
@@ -134,8 +138,10 @@ int main()
 		
 		//if a racer ends a turn at 50 (finish line), they win and race stops
 		if (*ptrRacerA >= RACE_LENGTH) {
+			std::cout << "You won! Against all the odds! Congratulations!" << std::endl;
 			keepGoing = 1;
 		}else if(*ptrRacerB >= RACE_LENGTH) {
+			std::cout << "Your much more atheletic friend won. Train harder! Become mighty!" << std::endl;
 			keepGoing = 1;
 		}else {
 			keepGoing = 0;
