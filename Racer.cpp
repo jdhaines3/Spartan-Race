@@ -1,3 +1,8 @@
+/* Honor Pledge: I pledge that I have neither 
+ given nor receieved any help on this assignment.
+ Spartan Race: Assignment #2
+ David Haines */
+ 
 #include <iostream>
 #include <stdlib.h> 
 #include <ctime>
